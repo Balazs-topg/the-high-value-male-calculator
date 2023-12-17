@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 import integrate from "@/utils/integrate";
 import normalDistributionEquation from "@/utils/normalDistributionEquation";
 
-import { Button, Slider } from "@nextui-org/react";
+import { Slider } from "@nextui-org/react";
 
 export default function Home() {
   const [age, setAge] = useState([18, 80]);
@@ -21,6 +21,7 @@ export default function Home() {
     () => integrate(fatDistrobution, 0, maxBFProcent),
     [maxBFProcent],
   );
+  console.log(fatIntergral);
 
   const [minIncome, setMinIncome] = useState(30000);
   const incomeDistrobution = normalDistributionEquation(61681, 50000);
@@ -68,13 +69,8 @@ export default function Home() {
           minValue={0}
           maxValue={500000}
         />
-        <div className=" mx-auto max-w-xs">
-          <Button variant="shadow" color="primary" fullWidth>
-            Calculate
-          </Button>
-        </div>
         <div className=" text-center text-2xl">
-          {Math.round(finalProcentage * 100000) / 1000}%
+          {Math.round(finalProcentage * 10000000) / 100000}%
         </div>
       </div>
     </>
